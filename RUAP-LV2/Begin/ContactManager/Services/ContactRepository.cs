@@ -57,6 +57,7 @@ namespace ContactManager.Services
         {
             var ctx = HttpContext.Current;
 
+
             if (ctx != null)
             {
                 try

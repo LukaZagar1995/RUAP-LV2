@@ -24,11 +24,20 @@ namespace ContactManager.Controllers
         }
         public HttpResponseMessage Post(Contact contact)
         {
-            this.contactRepository.SaveContact(contact);
 
-            var response = Request.CreateResponse<Contact>(System.Net.HttpStatusCode.Created, contact);
 
-            return response;
+            if (contact.Name != null)
+            {
+
+
+                this.contactRepository.SaveContact(contact);
+
+                var response = Request.CreateResponse<Contact>(System.Net.HttpStatusCode.Created, contact);
+
+                return response;
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Error");
+
         }
     }
     
